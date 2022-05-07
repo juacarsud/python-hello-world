@@ -1,4 +1,11 @@
-node {
+podTemplate(containers: [
+    containerTemplate(
+        name: 'docker', 
+        image: 'docker:latest'
+        )
+  ])
+
+node(POD_LABEL) {
     def app
 
     stage('Clone repository') {
@@ -8,6 +15,11 @@ node {
     }
 
     stage('Build image') {
+        container('docker'){
+            stage('Inside Container'){
+                docker build -t test:latest .
+            }
+        }
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
