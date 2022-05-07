@@ -3,9 +3,8 @@ podTemplate(containers: [
         name: 'docker', 
         image: 'docker:latest'
         )
-  ])
-
-node(POD_LABEL) {
+  ]){
+      node(POD_LABEL) {
     def app
 
     stage('Clone repository') {
@@ -48,3 +47,5 @@ node(POD_LABEL) {
         }
     }
 }
+
+  }
