@@ -1,9 +1,12 @@
-FROM python:3.8-alpine
+FROM python:3.8.3-alpine
 
-RUN mkdir /app
+
+RUN adduser -D application
+USER application
 WORKDIR /app
-ADD . /app/
-RUN python -m pip install --upgrade pip && pip install -r requirements.txt
+COPY --chown=application:application . .
+ENV PATH="/home/application/.local/bin:${PATH}"
+RUN pip install -r requirements.txt
 
 EXPOSE 5000
 CMD ["python", "/app/app.py"]
