@@ -1,7 +1,7 @@
 FROM python:3.8.3-alpine
 
 
-RUN adduser -D application
+RUN apt-get update -y && apt-get install curl -y && adduser -D application
 USER application
 WORKDIR /app
 COPY --chown=application:application . .
