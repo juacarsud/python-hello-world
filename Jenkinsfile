@@ -17,7 +17,9 @@ node(POD_LABEL) {
     stage('Build image') {
         container('docker'){
             stage('Inside Container'){
+                sh '''
                 docker build -t test:latest .
+                '''
             }
         }
         /* This builds the actual image; synonymous to
