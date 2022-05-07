@@ -6,6 +6,7 @@ USER application
 WORKDIR /app
 COPY --chown=application:application . .
 ENV PATH="/home/application/.local/bin:${PATH}"
+RUN curl https://pypi.org/simple/flask/
 RUN pip install --user -r requirements.txt
 
 EXPOSE 5000
