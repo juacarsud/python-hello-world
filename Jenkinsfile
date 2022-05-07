@@ -6,7 +6,7 @@ podTemplate(containers: [
         command: "cat")
         ],
         volumes: [
-            hostPath( mountPath: '/var/run/docker.sock', serverPath: '/var/run/docker.sock')
+            hostPathVolume( mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')
         ]){
       node(POD_LABEL) {
         def app
