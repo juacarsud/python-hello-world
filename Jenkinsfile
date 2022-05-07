@@ -3,10 +3,8 @@ podTemplate(containers: [
         name: 'docker', 
         image: 'docker:latest',
         ttyEnabled: true,
-        command: 
-          - sleep
-        args:
-          - infinity
+        command: ["sleep"]
+        args: ["infinity"]
         volumeMounts:
           - name: docker-daemon
             mountPath: "/var/run/docker.sock"
