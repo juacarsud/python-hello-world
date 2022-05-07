@@ -3,17 +3,18 @@ podTemplate(containers: [
         name: 'docker', 
         image: 'docker:latest',
         ttyEnabled: true,
-        command: 'sleep'
+        command: 
+          - sleep
         args:
-        - infinity
+          - infinity
         volumeMounts:
           - name: docker-daemon
             mountPath: "/var/run/docker.sock"
         workingDir: "/home/jenkins/agent"
         volumes:
-        - name: docker-daemon
-          hostPath:
-            path: "/var/run/docker.sock"
+          - name: docker-daemon
+            hostPath:
+                path: "/var/run/docker.sock"
         )
   ]){
       node(POD_LABEL) {
