@@ -8,7 +8,7 @@ podTemplate(containers: [
         volumes: [
             hostPathVolume( mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')
         ],
-        hostNetwork: [true]
+        hostNetwork: true
         ){
       node(POD_LABEL) {
         def app
